@@ -36,10 +36,15 @@ app.post('/add_post', async(req, res) => {
   await Post.create(req.body);
   res.redirect('/');
 });
-app.get('/post', (req, res) => {
-  res.render('post');
-});
 
+app.get('/post/:id', async(req, res) => {
+  //console.log(req.params.id);
+  //res.render('photo');
+  const post = await Post.findById(req.params.id);
+  res.render('post', {
+    post:post  //solo
+  })
+});
 const port = 3000;
 app.listen(port, () => {
   console.log(`>>Server started at port ${port}`);
