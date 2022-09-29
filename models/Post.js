@@ -8,7 +8,6 @@ const PostSchema = new Schema({
     dateCreated: {
         type: Date,
         default: Date.now,
-        
     },
 });
 
