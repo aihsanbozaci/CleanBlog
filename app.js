@@ -1,50 +1,38 @@
 const express = require('express');
 const app = express();
-app.use(express.static('public'));
-
+const postController = require("./controllers/postControllers");
+const pageController = require("./controllers/pageControllers");
+var methodOverride = require('method-override');
+const ejs = require('ejs');
+const path = require('path');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/cleanblog-test-db', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
-const ejs = require('ejs');
-
-const path = require('path');
-
-const Post = require('./models/Post');
 //MIDDLEWARES
 app.use(express.urlencoded({extended : true})); //response form (reading url data)
-app.use(express.json());                        //converting data to json file to read
+app.use(express.json());  
+app.use(express.static('public'));              //converting data to json file to read
+app.use(
+  methodOverride("_method", {
+    methods: ["POST", "GET"],
+  })
+);
 //TEMPLATE ENGINE
 app.set('view engine', 'ejs');
+//Routes
+app.get('/', pageController.getIndex);
+app.get('/about', pageController.getAbout);
+app.get('/add_post', pageController.getAddPost);
+app.get('/post/:id', pageController.getSinglePost);
+app.post('/add_post', postController.postAddPost);
+app.get("/post/edit/:id", pageController.editPage);
+app.put("/post/:id", postController.updatePost);
+app.delete('/post/:id', postController.deletePost);
 
-app.get('/', async(req, res) => {
-  const posts = await Post.find({})
-  res.render('index', {
-    posts
-  });
-});
-app.get('/about', (req, res) => {
-  res.render('about');
-});
-app.get('/add_post', (req, res) => {
-  res.render('add_post');
-});
-app.post('/add_post', async(req, res) => {
-  //console.log(req.body);
-  await Post.create(req.body);
-  res.redirect('/');
-});
 
-app.get('/post/:id', async(req, res) => {
-  //console.log(req.params.id);
-  //res.render('photo');
-  const post = await Post.findById(req.params.id);
-  res.render('post', {
-    post:post  //solo
-  })
-});
 const port = 3000;
 app.listen(port, () => {
   console.log(`>>Server started at port ${port}`);

@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
     title: String,
     detail: String,
+    detail2: String,
     dateCreated: {
         type: Date,
         default: Date.now,
