@@ -6,7 +6,7 @@ var methodOverride = require('method-override');
 const ejs = require('ejs');
 const path = require('path');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/cleanblog-test-db', {
+mongoose.connect('mongodb://localhost/', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

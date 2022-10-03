@@ -5,11 +5,11 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aihsanbozaci/CleanBlog.git"
+    "url": "git+https://github.com/aihsanbozaci/SIMPLEARO.git"
   },
   "keywords": [
     "clean",
@@ -20,9 +20,9 @@
   "author": "Ahmet İhsan Bozacı",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aihsanbozaci/CleanBlog/issues"
+    "url": "https://github.com/aihsanbozaci/SIMPLEARO/issues"
   },
-  "homepage": "https://github.com/aihsanbozaci/CleanBlog#readme",
+  "homepage": "https://github.com/aihsanbozaci/SIMPLEARO#readme",
   "devDependencies": {
     "nodemon": "^2.0.20",
     "prettier": "2.7.1"
