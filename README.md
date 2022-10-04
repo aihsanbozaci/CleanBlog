@@ -1,9 +1,11 @@
 ## SIMPLEARO - Blog
-Blog Website with Node.js backend.
+### Blog Website with Node.js backend.
+
+Live Demo: https://simplearo.herokuapp.com/
 ### Libraries I use:
   [Node](https://nodejs.org/en/), [express](http://expressjs.com/), [ejs](https://ejs.co/), [mongoose ](https://mongoosejs.com/)
   
-Live Demo: https://simplearo.herokuapp.com/
+
 
 Database: [MongoDB Atlas](https://www.mongodb.com/atlas/database)
 
